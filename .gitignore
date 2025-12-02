@@ -1,7 +1,6 @@
 # Folders
 .vs/
-ConsoleApplication/
-CustomerAPI/
+x64/
 
 # Build directories
 Build_*
