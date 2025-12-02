@@ -1,8 +1,5 @@
 # Folders
 .vs/
-Debug/
-Release/
-x64/
 ConsoleApplication/
 CustomerAPI/
 
