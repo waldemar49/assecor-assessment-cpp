@@ -27,10 +27,16 @@ namespace CustomerAPI
   std::string Formatter::getAllCustomersString(const Archive& archive)
   {
     std::stringstream ss;
-    for (auto customer : archive.getAllCustomers())
+    if (std::vector<CUSTOMER> allCustomers = archive.getAllCustomers(); allCustomers.empty())
     {
-      ss << getFormattedString(customer);
-      ss << "\n";
+      ss << noCustomerStr;
+    }
+    else
+    {
+      for (auto customer : allCustomers)
+      {
+        ss << getFormattedString(customer);
+      }
     }
 
     return ss.str();

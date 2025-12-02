@@ -67,11 +67,11 @@ namespace ConsoleApplication
   void Application::printHelpText()
   {
     std::cout << "Available commands:\n" <<
-                 "\"exit\" to quit the application.\n" <<
-                 "\"help\" for a list of available commands.\n" <<
-                 "\"add <first name, last_name, zipcode, city, favorite color>\" to add a new customer with given parameters to database.\n" <<
-                 "\"print <ID>\" to print customer with given ID.\n" <<
-                 "\"printAll\" to print all customers in database.\n";
+                 "  exit - to quit the application.\n" <<
+                 "  help - for a list of available commands.\n" <<
+                 "  add <first name, last name, zipcode, city, favorite color> - to add a new customer with given parameters to database.\n" <<
+                 "  print <ID> - to print customer with given ID.\n" <<
+                 "  printAll - to print all customers in database.\n";
   }
 
   void Application::printAllCustomers()
