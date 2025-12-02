@@ -2,7 +2,9 @@
 .vs/
 Debug/
 Release/
-assecor-assessment-cpp/
+x64/
+ConsoleApplication/
+CustomerAPI/
 
 # Build directories
 Build_*
