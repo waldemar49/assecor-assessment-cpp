@@ -36,6 +36,8 @@ namespace CustomerAPI
       for (auto customer : allCustomers)
       {
         ss << getFormattedString(customer);
+        if (customer.id != allCustomers.size() - 1)
+          ss << "\n";
       }
     }
 
@@ -45,7 +47,7 @@ namespace CustomerAPI
   std::string Formatter::getFormattedString(const CUSTOMER& customer)
   {
     std::stringstream ss;
-    ss << customer.first_name << ", " << customer.last_name << "," << customer.zip_code << ", " << customer.city <<
+    ss << customer.first_name << ", " << customer.last_name << ", " << customer.zip_code << ", " << customer.city <<
       ", " << colorToString(customer.favorite_color);
 
     return ss.str();

@@ -3,31 +3,63 @@
 
 #include <iostream>
 #include <sstream>
+#include <algorithm>
+#include <cctype>
 
 namespace CustomerAPI
 {
+  const std::string blueStr = "blue";
+  const std::string greenStr = "green";
+  const std::string violetStr = "violet";
+  const std::string redStr = "red";
+  const std::string yellowStr = "yellow";
+  const std::string turquoiseStr = "turquoise";
+  const std::string whiteStr = "white";
+
   std::string colorToString(Colors color)
   {
     switch (color)
     {
     case Colors::COLOR_BLUE:
-      return "blue";
+      return blueStr;
     case Colors::COLOR_GREEN:
-      return "green";
+      return greenStr;
     case Colors::COLOR_VIOLET:
-      return "violet";
+      return violetStr;
     case Colors::COLOR_RED:
-      return "red";
+      return redStr;
     case Colors::COLOR_YELLOW:
-      return "yellow";
+      return yellowStr;
     case Colors::COLOR_TURQUOISE:
-      return "turquoise";
+      return turquoiseStr;
     case Colors::COLOR_WHITE:
-      return "white";
+      return whiteStr;
     default: // Unknown.
       return "unknown color";
     }
 
+  }
+
+  CUSTOMERAPI Colors stringToColor(std::string colorStr)
+  {
+    std::transform(colorStr.begin(), colorStr.end(), colorStr.begin(), [](unsigned char c) { return std::tolower(c); });
+
+    if (colorStr == blueStr)
+      return Colors::COLOR_BLUE;
+    else if (colorStr == greenStr)
+      return Colors::COLOR_GREEN;
+    else if (colorStr == violetStr)
+      return Colors::COLOR_VIOLET;
+    else if (colorStr == redStr)
+      return Colors::COLOR_RED;
+    else if (colorStr == yellowStr)
+      return Colors::COLOR_YELLOW;
+    else if (colorStr == turquoiseStr)
+      return Colors::COLOR_TURQUOISE;
+    else if (colorStr == whiteStr)
+      return Colors::COLOR_WHITE;
+
+    return Colors::LAST_COLOR; // Unknown color.
   }
 
   std::ostream& operator<<(std::ostream& os, CUSTOMER& customer)
@@ -54,23 +86,23 @@ namespace CustomerAPI
     favorite_color(favoriteColor)
   {
     // Enforce string max. lengths, including terminators.
+    if (firstName.size() > 23)
+      throw std::runtime_error("first name is too long: " + firstName + ", length: " + std::to_string(firstName.size()) + " / 23 characters");
+
     if (firstName[firstName.size()] != '\0')
     {
-      if (firstName.size() > 23)
-        throw std::runtime_error("Invalid first name: " + firstName + ", length: " + std::to_string(firstName.size()) + " / 24");
-
-      first_name = firstName + '\0';
+      first_name = firstName + '\0'; // Some legacy code might expect terminators for saved customer data.
     }
     else
     {
       first_name = firstName;
     }
 
+    if (lastName.size() > 31)
+      throw std::runtime_error("last name is too long: " + lastName + ", length: " + std::to_string(lastName.size()) + " / 31 characters");
+
     if (lastName[lastName.size()] != '0')
     {
-      if (lastName.size() > 31)
-        throw std::runtime_error("Invalid last name: " + lastName + ", length: " + std::to_string(lastName.size()) + " / 32");
-
       last_name = lastName + '\0';
     }
     else
@@ -78,11 +110,11 @@ namespace CustomerAPI
       last_name = lastName;
     }
 
+    if (zipCode.size() > 7)
+      throw std::runtime_error("zip code is too long: " + zipCode + ", length: " + std::to_string(zipCode.size()) + " / 7 characters");
+
     if (zipCode[zipCode.size()] != '\0')
     {
-      if (zipCode.size() > 7)
-        throw std::runtime_error("Invalid zip code: " + zipCode + ", length: " + std::to_string(zipCode.size()) + " / 8");
-
       zip_code = zipCode + '\0';
     }
     else
@@ -90,11 +122,11 @@ namespace CustomerAPI
       zip_code = zipCode;
     }
 
+    if (city.size() > 31)
+      throw std::runtime_error("city name is too long: " + city + ", length: " + std::to_string(city.size()) + " / 31 characters");
+
     if (city[city.size()] != '\0')
     {
-      if (city.size() > 31)
-        throw std::runtime_error("Invalid city name: " + city + ", length: " + std::to_string(city.size()) + " / 32");
-
       this->city = city + '\0';
     }
     else

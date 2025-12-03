@@ -17,12 +17,6 @@ namespace ConsoleApplication
 
   private:
 
-    bool executeCommand(Command command);
-
-    void printUnknownCommandString();
-    void printHelpText();
-    void printAllCustomers();
-
     CustomerAPI::Archive archive;
 
   };

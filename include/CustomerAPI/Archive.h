@@ -33,6 +33,7 @@ namespace CustomerAPI
 
   private:
 
+    // TODO: existing data might have holes in-between their IDs making vector unsuitable -> use set with unique ID as hash.
     std::vector<CUSTOMER> customers; // Since IDs are unique we can use a vector container with index = ID to identify the objects.
 
   };

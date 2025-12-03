@@ -9,22 +9,17 @@
 namespace ConsoleApplication
 {
 
-  enum class Command
-  {
-    unknonw,
-    exit,
-    help,
-    add,
-    printById,
-    printAll
-  };
-
   class CommandParser
   {
 
   public:
 
-    static Command parseCommand(const std::string& command);
+    static bool parseCommand(const std::string& command, CustomerAPI::Archive& archive);
+
+  private:
+
+    static void printById(const CustomerAPI::Archive& archive);
+    static void addCustomer(CustomerAPI::Archive& archive);
 
   };
 

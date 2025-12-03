@@ -23,10 +23,23 @@ namespace CustomerAPI
     COLOR_RED = 4,
     COLOR_YELLOW = 5,
     COLOR_TURQUOISE = 6,
-    COLOR_WHITE = 7
+    COLOR_WHITE = 7,
+
+    LAST_COLOR // Must always be last.
   };
 
+  /**
+   * @brief Returns a string representation correspoding Colors enum.
+   * @param color The Colors enum to get a string representation for.
+   * @return The string representation of the given Colors enum.
+   */
   CUSTOMERAPI inline std::string colorToString(Colors color);
+  /**
+   * @brief Returns the color to a corresponding string.
+   * @param colorStr The string to find the color for, we copy the string, since we will transform it to lower case.
+   * @return A Colors enum.
+   */
+  CUSTOMERAPI inline Colors stringToColor(std::string colorStr);
 
   struct CUSTOMER
   {
