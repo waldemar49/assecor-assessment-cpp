@@ -12,6 +12,9 @@ namespace CustomerAPI
 
   class Archive;
 
+  /**
+   * Class to return formatted string representations of customer archive.
+   */
   class Formatter
   {
 

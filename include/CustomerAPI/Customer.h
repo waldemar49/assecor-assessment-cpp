@@ -25,7 +25,7 @@ namespace CustomerAPI
   };
 
   /**
-   * @brief Returns a string representation correspoding Colors enum.
+   * @brief Returns a string representation of correspoding Colors enum.
    * @param color The Colors enum to get a string representation for.
    * @return The string representation of the given Colors enum.
    */
@@ -47,9 +47,10 @@ namespace CustomerAPI
                          const std::string& lastName,
                          const std::string& zipCode,
                          const std::string& city,
-                         Colors favoriteColor);
+                         Colors favoriteColor,
+                         int id = -1);
 
-    int id = -1;
+    int id;
     
     // Note: legacy code might expect terminators for these, so we might need to append those when saving the customer data.
     std::string first_name; // Max. 24 chars including terminator.

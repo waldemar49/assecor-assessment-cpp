@@ -19,18 +19,34 @@ namespace CustomerAPI
     }
   };
 
+  /**
+   * Provides the implementation of a customer archive.
+   */
   class Archive
   {
 
   public:
     
-    CUSTOMERAPI void addCustomer(CUSTOMER& customer);
+    /**
+     * @brief Adds the given customer to the archive.
+     * @param customer The customer to add.
+     */
+    CUSTOMERAPI virtual void addCustomer(CUSTOMER& customer);
 
-    CUSTOMERAPI std::optional<CUSTOMER> getCustomer(int id) const;
+    /**
+     * @brief Gets customer with given ID from archive, if any.
+     * @param id The of the customer to get.
+     * @return The customer with given ID, nullopt, else.
+     */
+    CUSTOMERAPI virtual std::optional<CUSTOMER> getCustomer(int id) const;
 
-    CUSTOMERAPI std::vector<CUSTOMER> getAllCustomers() const;
+    /**
+     * @brief Returns a sorted vector of all customers currently in the archive.
+     * @return A vector of all customers in archive.
+     */
+    CUSTOMERAPI virtual std::vector<CUSTOMER> getAllCustomers() const;
 
-    CUSTOMERAPI size_t getSize() const;
+    CUSTOMERAPI virtual size_t getSize() const;
 
   private:
 

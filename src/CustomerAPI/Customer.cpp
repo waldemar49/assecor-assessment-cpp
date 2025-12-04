@@ -66,8 +66,14 @@ namespace CustomerAPI
                      const std::string& lastName, 
                      const std::string& zipCode, 
                      const std::string& city, 
-                     Colors favoriteColor)
+                     Colors favoriteColor,
+                     int id)
     :
+    id(id),
+    first_name(firstName),
+    last_name(lastName),
+    zip_code(zipCode),
+    city(city),
     favorite_color(favoriteColor)
   {
     // Enforce string max. lengths, including terminators.
@@ -83,10 +89,8 @@ namespace CustomerAPI
     if (city.size() > 31)
       throw std::runtime_error("city name is too long: " + city + ", length: " + std::to_string(city.size()) + " / 31 characters");
 
-    first_name = firstName;
-    last_name = lastName;
-    zip_code = zipCode;
-    this->city = city;
+    if (favorite_color == Colors::LAST_COLOR)
+      throw std::runtime_error("an invalid color was passed (LAST_COLOR)");
   }
 
 } // CustomerDatabase

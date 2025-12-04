@@ -8,11 +8,14 @@ namespace CustomerAPI
   
   void Archive::addCustomer(CUSTOMER& customer)
   {
-    if (!customers.empty()) // Likely.
-      customer.id = static_cast<int>((customers.rbegin())->id + 1); // Set is sorted, so should be biggest ID.
-    else
-      customer.id = 0;
-    
+    if (customer.id == -1) // Existing customer loaded from somewhere.
+    {
+      if (!customers.empty()) // Likely.
+        customer.id = static_cast<int>((customers.rbegin())->id + 1); // Set is sorted, so should be biggest ID.
+      else
+        customer.id = 1; // Database might not be zero indexed.
+    }
+
     customers.insert(customer);
   }
 
