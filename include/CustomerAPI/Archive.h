@@ -1,28 +1,29 @@
 #pragma once
 
-#define no_init_all deprecated // Some visual studio bug.
-
-#ifdef CUSTOMERAPI_EXPORTS
-#define CUSTOMERAPI __declspec(dllexport)
-#else
-#define CUSTOMERAPI __declspec(dllimport)
-#endif
-
 #include "Customer.h"
+#include "CustomerAPI_Exports.h"
 
+#include <set>
 #include <vector>
 #include <optional>
 
 namespace CustomerAPI
 {
 
+  // Provides the compare function for the set that holds the customers.
+  struct customerCompare
+  {
+    bool operator() (const CUSTOMER& a, const CUSTOMER& b) 
+    { 
+      return a.id < b.id; 
+    }
+  };
+
   class Archive
   {
 
   public:
     
-    CUSTOMERAPI Archive();
-
     CUSTOMERAPI void addCustomer(CUSTOMER& customer);
 
     CUSTOMERAPI std::optional<CUSTOMER> getCustomer(int id) const;
@@ -33,8 +34,7 @@ namespace CustomerAPI
 
   private:
 
-    // TODO: existing data might have holes in-between their IDs making vector unsuitable -> use set with unique ID as hash.
-    std::vector<CUSTOMER> customers; // Since IDs are unique we can use a vector container with index = ID to identify the objects.
+    std::set<CUSTOMER, customerCompare> customers;
 
   };
 

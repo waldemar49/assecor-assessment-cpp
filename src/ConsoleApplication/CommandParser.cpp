@@ -23,6 +23,7 @@ namespace ConsoleApplication
     else
       ConsoleCommands::unknownCommand();
 
+    clearInputStream(); // Only one command per input.
     return false;
   }
 
@@ -34,8 +35,7 @@ namespace ConsoleApplication
     {
       std::cout << "Invalid parameter for print, parameter must be a positive integer.\n" <<
                    "Please repeat your request.\n";
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      clearInputStream();
     }
     else
     {
@@ -51,14 +51,19 @@ namespace ConsoleApplication
     std::string city;
     std::string colorStr;
 
-    // TODO: react to commas.
     std::cin >> firstName;
     std::cin >> lastName;
     std::cin >> zipCode;
     std::cin >> city;
-
     std::cin >> colorStr;
-    CustomerAPI::Colors color = static_cast<CustomerAPI::Colors>(CustomerAPI::stringToColor(colorStr));
+
+    removeComma(firstName);
+    removeComma(lastName);
+    removeComma(zipCode);
+    removeComma(city);
+    removeComma(colorStr);
+
+    CustomerAPI::Colors color = CustomerAPI::stringToColor(colorStr);
     if (color == CustomerAPI::Colors::LAST_COLOR)
     {
       std::cout << "An invalid color was entered.\n" <<
@@ -78,6 +83,18 @@ namespace ConsoleApplication
       std::cout << "Invalid parameter for add, " << e.what() << "\n" <<
                    "Please repeat your request with valid parameters.\n";
     }
+  }
+
+  void CommandParser::clearInputStream()
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  }
+
+  void CommandParser::removeComma(std::string& toRemoveFrom)
+  {
+    if(toRemoveFrom[toRemoveFrom.size() - 1] == ',')
+      toRemoveFrom.pop_back();
   }
 
 } // ConsoleApplication

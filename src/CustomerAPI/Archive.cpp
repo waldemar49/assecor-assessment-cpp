@@ -1,32 +1,44 @@
 #include "pch.h"
 #include "Archive.h"
 
+#include <algorithm>
+
 namespace CustomerAPI
 {
-
-  Archive::Archive()
-  {
-    // Pre-allocate some space to avoid unnecessary copying of the vector, keep it small since this is just an exercise.
-    customers.reserve(16);
-  }
   
   void Archive::addCustomer(CUSTOMER& customer)
   {
-    customer.id = static_cast<int>(customers.size()); // Narrowing cast, but unlikely to be a problem.
-    customers.emplace_back(customer);
+    if (!customers.empty()) // Likely.
+      customer.id = static_cast<int>((customers.rbegin())->id + 1); // Set is sorted, so should be biggest ID.
+    else
+      customer.id = 0;
+    
+    customers.insert(customer);
   }
 
   std::optional<CUSTOMER> Archive::getCustomer(int id) const
   {
-    if (customers.empty() || id < 0 || id > customers.size())
+    if (customers.empty())
       return std::nullopt;
 
-    return customers[id];
+    if (const auto it = std::find_if(customers.begin(), customers.end(), [id](const CUSTOMER& customer) { return id == customer.id; }); 
+      it != customers.end())
+    {
+      return *it;
+    }
+
+    return std::nullopt;
   }
 
   std::vector<CUSTOMER> Archive::getAllCustomers() const
   {
-    return customers;
+    std::vector<CUSTOMER> res;
+    for (auto& c : customers)
+    {
+      res.emplace_back(c);
+    }
+
+    return res;
   }
 
   size_t Archive::getSize() const

@@ -21,6 +21,9 @@ namespace ConsoleApplication
     static void printById(const CustomerAPI::Archive& archive);
     static void addCustomer(CustomerAPI::Archive& archive);
 
+    static void clearInputStream();
+    static void removeComma(std::string& toRemoveFrom);
+
   };
 
 } // ConsoleApplication

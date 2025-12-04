@@ -1,10 +1,6 @@
 #pragma once
 
-#ifdef CUSTOMERAPI_EXPORTS
-#define CUSTOMERAPI __declspec(dllexport)
-#else
-#define CUSTOMERAPI __declspec(dllimport)
-#endif
+#include "CustomerAPI_Exports.h"
 
 #include <string>
 
@@ -55,6 +51,7 @@ namespace CustomerAPI
 
     int id = -1;
     
+    // Note: legacy code might expect terminators for these, so we might need to append those when saving the customer data.
     std::string first_name; // Max. 24 chars including terminator.
     std::string last_name; // Max. 32 chars including terminator.
     std::string zip_code; // Max. 8 chars including terminator.
@@ -63,8 +60,5 @@ namespace CustomerAPI
     Colors favorite_color;
 
   };
-
-  CUSTOMERAPI inline std::ostream& operator<<(std::ostream& os, const CUSTOMER& customer);
-  CUSTOMERAPI inline std::istream& operator>>(std::istream& is, CUSTOMER& outCustomer);
 
 } // CustomerDatabase

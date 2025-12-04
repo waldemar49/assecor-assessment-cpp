@@ -27,11 +27,11 @@ namespace ConsoleApplication
   void ConsoleCommands::help()
   {
     std::cout << "Available commands:\n" <<
-      "  add <first name, last name, zipcode, city, favorite color> - to add a new customer with given parameters to database.\n" <<
+      "  add <first name, last name, zipcode, city, favorite color> - to add a new customer with given parameters to archive.\n" <<
       "  availableColors - for a list of available favorite colors to choose from.\n"
       "  help - for a list of available commands.\n" <<
       "  print <ID> - to print customer with given ID.\n" <<
-      "  printAll - to print all customers in database.\n" <<
+      "  printAll - to print all customers in archive.\n" <<
       "  quit - to quit the application.\n";
   }
 

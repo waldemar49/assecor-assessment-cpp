@@ -8,7 +8,7 @@ namespace ConsoleApplication
 {
 
   /**
-   * A collection of static function to execute requested console commands.
+   * A collection of static functions to execute requested console commands.
    */
   class ConsoleCommands
   {
