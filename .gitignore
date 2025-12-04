@@ -48,3 +48,4 @@ Build_*
 
 # GTest files not built by this project
 !gtest_main.pdb
+!gtest.pdb
