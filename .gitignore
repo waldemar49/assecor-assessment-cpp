@@ -1,6 +1,9 @@
 # Folders
 .vs/
-x64/
+ConsoleApplciation/x64/
+ConsoleApplciation_unitTest/x64/
+CustomerAPI/x64/
+CustomerAPI_unitTest/x64/
 
 # Build directories
 Build_*
@@ -42,5 +45,3 @@ Build_*
 *.svclog
 *.scc
 *.lastbuildstate
-#*.vcxproj
-#*.vcxproj.filters
