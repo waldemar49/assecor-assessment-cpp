@@ -16,7 +16,7 @@ Build_*
 *.sln.docstates
 
 # GTest files not built by this project
-gtest_main.pdb!
+!gtest_main.pdb
 
 # Files built by Visual Studio
 *_i.c
