@@ -36,7 +36,7 @@ namespace CustomerAPI
       for (auto customer : allCustomers)
       {
         ss << getFormattedString(customer);
-        if (customer.id != allCustomers.size() - 1)
+        if (customer.id != allCustomers.size())
           ss << "\n";
       }
     }

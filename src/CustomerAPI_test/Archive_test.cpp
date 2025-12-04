@@ -16,7 +16,7 @@ void ArchiveTester::SetUp()
     archive.addCustomer(customer);
   }
 
-  GTEST_ASSERT_EQ(archive.getSize(), 5) << "Setup failed, tried to insert " << initialCustomers.size() << " customers, found: " << archive.getSize();
+  GTEST_ASSERT_EQ(archive.getSize(), 5);
 }
 
 TEST_F(ArchiveTester, addLoadedCustomerTest)

@@ -3,16 +3,6 @@
 #include "Archive.h"
 
 #include <gtest/gtest.h>
-//#include <gmo
-//
-//class MockArchive : public CustomerAPI::Archive
-//{
-//
-//public:
-//
-//  MOCK_METHOD
-//
-//};
 
 class ArchiveTester : public ::testing::Test
 {
