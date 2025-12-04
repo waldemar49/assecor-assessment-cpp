@@ -1,14 +1,13 @@
 # Folders
-#.vs/
+.vs/
 x64/
-v15/
 
 # Build directories
 Build_*
 
 # User-specific files
 *.rsuser
-#*.suo
+*.suo
 *.user
 *.userosscache
 *.sln.docstates
@@ -43,5 +42,5 @@ Build_*
 *.svclog
 *.scc
 *.lastbuildstate
-*.vcxproj
-*.vcxproj.filters
+#*.vcxproj
+#*.vcxproj.filters
