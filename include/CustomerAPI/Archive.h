@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Customer.h"
+#include "customer.h"
 #include "CustomerAPI_Exports.h"
 
 #include <set>

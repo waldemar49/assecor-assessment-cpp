@@ -2,7 +2,7 @@
 
 #include "Archive.h"
 #include "Formatter.h"
-#include "Customer.h"
+#include "customer.h"
 
 #include <string>
 

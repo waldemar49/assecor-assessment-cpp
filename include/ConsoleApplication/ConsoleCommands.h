@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Archive.h"
-#include "Customer.h"
+#include "customer.h"
 #include "Formatter.h"
 
 namespace ConsoleApplication

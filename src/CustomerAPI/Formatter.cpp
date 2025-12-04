@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Formatter.h"
 #include "Archive.h"
-#include "Customer.h"
+#include "customer.h"
 
 #include <sstream>
 

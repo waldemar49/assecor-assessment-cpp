@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Customer.h"
+#include "customer.h"
 
 #include <iostream>
 #include <sstream>
