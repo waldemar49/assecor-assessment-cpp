@@ -2,6 +2,7 @@
 #include "ConsoleCommands.h"
 
 #include <iostream>
+#include <sstream>
 
 namespace ConsoleApplication
 {
