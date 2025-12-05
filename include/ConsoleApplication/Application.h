@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Archive.h"
+#include "CommandParser.h"
 
 namespace ConsoleApplication
 {

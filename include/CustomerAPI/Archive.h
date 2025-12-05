@@ -27,6 +27,8 @@ namespace CustomerAPI
 
   public:
     
+    virtual ~Archive() = default;
+
     /**
      * @brief Adds the given customer to the archive.
      * @param customer The customer to add.

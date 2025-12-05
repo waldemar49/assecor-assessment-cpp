@@ -62,4 +62,7 @@ namespace CustomerAPI
 
   };
 
+
+  CUSTOMERAPI inline bool operator==(const CUSTOMER& a, const CUSTOMER& b) { return a.id == b.id; };
+
 } // CustomerDatabase

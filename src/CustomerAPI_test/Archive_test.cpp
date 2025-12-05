@@ -2,6 +2,8 @@
 
 #include <optional>
 
+using ::testing::Return;
+
 const std::vector<CustomerAPI::CUSTOMER> initialCustomers = { CustomerAPI::CUSTOMER("Anna", "Nuhr", "23354", "Böhringen", CustomerAPI::Colors::COLOR_RED),
                                                               CustomerAPI::CUSTOMER("Bob", "Stuhr", "87985", "Suhlingen", CustomerAPI::Colors::COLOR_GREEN),
                                                               CustomerAPI::CUSTOMER("Carin", "Lahm", "48938", "Menden", CustomerAPI::Colors::COLOR_BLUE),
@@ -10,7 +12,6 @@ const std::vector<CustomerAPI::CUSTOMER> initialCustomers = { CustomerAPI::CUSTO
 
 void ArchiveTester::SetUp()
 {
-  archive = CustomerAPI::Archive();
   for (auto customer : initialCustomers)
   {
     archive.addCustomer(customer);
